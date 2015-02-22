@@ -1,13 +1,14 @@
 <%= render 'shared/header', header: "Create a new Status" %>
 <%= render 'shared/errors', obj: @status %>
 
+<% if logged_in? %>
+	<%= form_for @status do |f| %>
 
-<%= form_for @status do |f| %>
+		<%= f.label :body %>
+		<%= f.text_area :body %>
 
-	<%= f.label :body %>
-	<%= f.text_area :body %>
+		<br/>
 
-	<br/>
-
-	<%= f.submit "Create Status" %>
+		<%= f.submit "Create Status" %>
+	<% end %>
 <% end %>

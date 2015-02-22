@@ -5,7 +5,7 @@ class StatusesController < ApplicationController
 
 	def create
 		@status = Status.new(status_params)
-		@status.user_id = 1 #TODO: update after authentication
+		@status.creator = current_user
 		if @status.save
 			flash[:notice] = "Status was created!"
 			redirect_to user_path(@status.creator.username)
