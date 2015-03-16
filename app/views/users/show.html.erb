@@ -1,5 +1,11 @@
-<h3><%= link_to "@"+@user.username, user_path(@user.username) %></h3>
-
+<h3><%= link_to '@'+@user.username, user_path(@user.username) %></h3>
+<% if logged_in? %>
+  <% if !following_user?(@user) %>
+    <%= link_to "+ follow", follow_user_path(@user), method: 'post', class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to "- unfollow", follow_user_path(@user), method: 'post', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
 <p>
 	<ul>
 		<% @user.statuses.each do |status| %>

@@ -1,14 +1,23 @@
+<div class="container col-md-6 col-md-offset-4">
 <%= render 'shared/header', header: "Create a new Status" %>
-<%= render 'shared/errors', obj: @status %>
+  <div class="row">
+  <%= render 'shared/errors', obj: @status %>
 
-<% if logged_in? %>
-	<%= form_for @status do |f| %>
+  <% if logged_in? %>
+  	<%= form_for @status, html: {class: 'form-horizontal', role: 'form'} do |f| %>
 
-		<%= f.label :body %>
-		<%= f.text_area :body %>
+      <div class="form-group">
+    		<%= f.label :body, class: "control-label col-sm-2" %>
+        <div class="col-md-6">
+    		  <%= f.text_area :body, class: "form-control" %>
+        </div>
+      </div>
+  		<br/>
 
-		<br/>
-
-		<%= f.submit "Create Status" %>
-	<% end %>
-<% end %>
+      <div class="form-group col-md-offset-6">
+  		  <%= f.submit "Create Status", class: "btn btn-primary" %>
+      </div>
+  	<% end %>
+  <% end %>
+</div>
+</div>

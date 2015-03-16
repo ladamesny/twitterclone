@@ -1,4 +1,6 @@
 class StatusesController < ApplicationController
+	before_action :require_user, only: [:new, :create]
+
 	def new
 		@status = Status.new
 	end
@@ -20,4 +22,5 @@ class StatusesController < ApplicationController
 	def status_params
 		params.require(:status).permit(:body)
 	end
+
 end
