@@ -1,6 +1,6 @@
 <%= render 'shared/header', header: "Timeline" %>
-<ul>
+<ul id="statuses">
 <% @statuses.each do |status| %>
-  <li><%= status.body %> by <%= link_to '@'+status.creator.username, user_path(status.creator.username) %> at <%= status.created_at %> </li>
+  <%= render 'status', status: status %>
 <% end %>
 </ul>

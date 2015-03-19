@@ -1,0 +1,6 @@
+<%= render 'shared/header', header: "Metions" %>
+<ul id="statuses">
+<% @mentions.each do |mention| %>
+<%= render 'status', status: mention.status %>
+<% end %>
+</ul>

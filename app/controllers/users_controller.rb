@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	include UserHelper
-	before_action :require_user, only: [:follow, :timeline]
+	before_action :require_user, only: [:follow, :timeline, :mentions]
 
 	def index
 		@users = User.all
@@ -42,6 +42,11 @@ class UsersController < ApplicationController
 				@statuses << status
 			end
 		end
+	end
+
+	def mentions
+		@mentions = current_user.mentions
+		current_user.mark_unread_mentions!
 	end
 
 	private

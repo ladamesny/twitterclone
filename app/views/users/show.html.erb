@@ -1,15 +1,17 @@
 <h3><%= link_to '@'+@user.username, user_path(@user.username) %></h3>
 <% if logged_in? %>
-  <% if !following_user?(@user) %>
-    <%= link_to "+ follow", follow_user_path(@user), method: 'post', class: 'btn btn-primary' %>
-  <% else %>
-    <%= link_to "- unfollow", follow_user_path(@user), method: 'post', class: 'btn btn-primary' %>
+  <% if @user != current_user %>
+    <% if !following_user?(@user) %>
+      <%= link_to "+ follow", follow_user_path(@user), method: 'post', class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to "- unfollow", follow_user_path(@user), method: 'post', class: 'btn btn-primary' %>
+    <% end %>
   <% end %>
 <% end %>
 <p>
-	<ul>
+	<ul id="statuses">
 		<% @user.statuses.each do |status| %>
-		<li><%= status.body %> on <%= status.created_at%></li>
+		<li class="status"><%= status.body %> <em class="author">on <%= status.created_at%></em></li>
 		<% end %>
 	</ul>
 </p>

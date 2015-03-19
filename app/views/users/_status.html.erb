@@ -1,0 +1,5 @@
+  <li class="status"><%= status.body %>
+    <div class="author">
+      <em>by <%= link_to '@'+status.creator.username, user_path(status.creator.username) %> at <%= status.created_at %></em>
+    </div>
+  </li>
