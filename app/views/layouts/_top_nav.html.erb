@@ -1,10 +1,44 @@
-<%= link_to "Home", root_path %> |
-<% if logged_in? %>
-  Welcome <%= current_user.username %> |
-  <%= link_to 'Timeline', timeline_path %> |
-  <%= link_to "Mentions (#{current_user.num_unread_mentions})", mentions_path %> |
-	<%= link_to 'New Status', new_status_path %> |
-  <%= link_to 'Logout', logout_path %>
-<% else %>
-	<%= link_to "Register", new_user_path %> | <%= link_to "Login", login_path %>
-<% end %>
+<div class="topbar js-topbar">
+  <div class="global-nav">
+    <div class="global-nav-inner">
+      <div class="container">
+      <%= link_to root_path do %>
+        <span class="glyphicon glyphicon-star"></span>
+      <% end %>
+      <% if logged_in? %>
+        Welcome <%= current_user.username %> |
+        <%= link_to timeline_path do %>
+        <span class="glyphicon glyphicon-star"></span>
+        <% end %>
+          |
+        <%= link_to "Mentions (#{current_user.num_unread_mentions})", mentions_path %> |
+      	<%= link_to 'New Status', new_status_path %>
+        <%= link_to 'Logout', destroy_user_session_path %>
+      <% else %>
+      	<%= link_to "Register", new_user_registration_path %> | <%= link_to "Login", new_user_session_path %>
+      <% end %>
+      <div class="pull-right" style="display: inline-block;">
+        <div role="search">
+          <form class="form-search" >
+            <div class="form-group">
+            <div class="input-group">
+            <input class="form-control search-query" type="text" id="search-query" placeholder="Search Twitter">
+            <button type="submit" class="btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+            </div>
+            </div>
+          </form>
+        </div>
+
+        <ul class="nav right-actions">
+          <li class="me dropdown session js-session" id ="user-dropdown">
+
+          </li>
+          <li class="topbar-tweet-btn">
+
+          </li>
+        </ul>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-	get '/login', to: "sessions#new"
-	post '/login', to: "sessions#create"
-	get '/logout', to: "sessions#destroy"
+  devise_for :users, controllers: { sessions: "users/sessions" }
   get '/timeline', to: "users#timeline"
   get '/mentions', to: 'users#mentions'
 
@@ -12,8 +10,5 @@ Rails.application.routes.draw do
     end
   end
   resources :statuses, only: [ :new, :create]
-
-  get "/:username", to: "users#show", as: 'user'
-
   root to: "users#index"
 end

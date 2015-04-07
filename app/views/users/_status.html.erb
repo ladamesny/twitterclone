@@ -1,5 +1,17 @@
-  <li class="status"><%= status.body %>
-    <div class="author">
-      <em>by <%= link_to '@'+status.creator.username, user_path(status.creator.username) %> at <%= status.created_at %></em>
+  <li class="status" style="background-color:white; padding: 5px; border-radius: 5px; margin-bottom: 5px;">
+    <div class="row">
+      <div class="col-md-2">
+      <%= link_to '@'+status.creator.username, user_path(status.creator.username) %>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+        <%= status.body %>
+        </div>
+        <hr/>
+        <div class="row">
+          <em><small> | Reply | Retweet | Favorite | </small></em>
+        </div>
+      </div>
     </div>
   </li>

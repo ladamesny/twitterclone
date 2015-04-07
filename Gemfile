@@ -16,3 +16,16 @@ end
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'gravtastic'
+gem 'devise'
+
+group :test do
+  gem 'capybara'
+  gem 'factory_girl_rails'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'cucumber'
+  gem 'database_cleaner'
+end
