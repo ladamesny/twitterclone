@@ -3,7 +3,7 @@
   <div class="row">
   <%= render 'shared/errors', obj: @status %>
 
-  <% if logged_in? %>
+  <% if current_user %>
   	<%= form_for @status, html: {class: 'form-horizontal', role: 'form'} do |f| %>
 
       <div class="form-group">

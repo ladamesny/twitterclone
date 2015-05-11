@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	include UserHelper
-	before_action :require_user, only: [:follow, :timeline, :mentions]
+	before_action :authenticate_user!, only: [:follow, :timeline, :mentions]
 
 	def index
 		@users = User.all
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 		else
 			wrong_path
 		end
-		redirect_to user_path(user.username)
+		redirect_to user_path(user)
 	end
 
 	def timeline

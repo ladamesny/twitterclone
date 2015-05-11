@@ -1,5 +1,5 @@
 class StatusesController < ApplicationController
-	before_action :require_user, only: [:new, :create]
+	before_action :authenticate_user!, only: [:new, :create]
 
 	def new
 		@status = Status.new
@@ -10,7 +10,7 @@ class StatusesController < ApplicationController
 		@status.creator = current_user
 		if @status.save
 			flash[:notice] = "Status was created!"
-			redirect_to user_path(@status.creator.username)
+			redirect_to timeline_path(@status.creator)
 		else
 			flash[:notice] = "Status could not be created"
 			render :new
